@@ -1,0 +1,22 @@
+%play-area {
+    background-color: #ddd;
+    border-radius: 50%;
+    border: 1px solid #693cc2;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    @include display-flex(center);
+    transition: .3s ease-in;
+    i {
+        @include display-flex(center);
+        background-color: $main-color;
+        width: 30px;
+        height: 30px;
+        border-radius: inherit;
+        color: #fff;
+        font-size: 15px;
+    }
+    &:active {
+        transform: scale(1.2);
+    }
+}

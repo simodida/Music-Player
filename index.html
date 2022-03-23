@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Player</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="./Images/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./Images/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./Images/favicons/favicon-16x16.png">
+    <link rel="manifest" href="./Images/favicons/site.webmanifest">
+    <link rel="mask-icon" href="./Images/favicons/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="stylesheet" href="./css/style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  </head>
+  <body>
+    <div class="wrapper" id="wrapper">
+      <div class="big-player" id="big-player">
+        <div class="header"><i class="fa-solid fa-angle-down" id="down"></i>
+          <h2>Now Playing</h2>
+        </div>
+        <div class="img-area"><img src="./Images/Sun-Goes-Down.jpg" alt="" id="img"></div>
+        <h2 class="name-music" id="name-music">Jim Yosef x ROY KNOX - Sun Goes Down</h2>
+        <div class="progress-area" id="progress-area">
+          <div class="progress-bar" id="progress-bar"></div>
+        </div>
+        <div class="time">
+           <span class="current-time" id="current-time">0:00</span>
+          <span class="duration" id="duration">0:00</span>
+        </div>
+        <audio src="" id="audio"> </audio>
+        <div class="controls">
+           
+          <div class="tooltip">
+            <i class="material-icons" id="repeat-btn">repeat</i>
+            <span class="tooltip-text">looped</span></div>
+          <i class="fa-solid fa-backward-step" id="prev-music"></i>
+          <div class="play-area">
+             <i class="fa-solid fa-play" id="play-btn"></i></div>
+          <i class="fa-solid fa-forward-step" id="next-music"></i>
+          <i class="material-icons" id="list-music-btn">queue_music</i>
+        </div>
+        <div class="list-music" id="list-music">
+          <div class="header">
+            <div class="row">
+               <i class="fa-solid fa-list-ul"></i>
+              <span>Music list</span>
+            </div><i class="fa-solid fa-xmark" id="close-list-music"></i>
+          </div>
+          <ul id="ul"></ul>
+        </div>
+      </div>
+      <div class="small-player" id="small-player">
+        <div class="image" id="image">
+           <img class="cd-img" src="./Images/cd-black.jpg">
+          <img class="img-sp" src="./Images/Sun-Goes-Down.jpg" alt="" id="img-sp">
+        </div>
+        <h5 id="name-music-sp">Jim Yosef x ROY KNOX - Sun Goes Down</h5>
+        <div class="play-area sp">
+          <i class="fa-solid fa-play sp" id="play-btn-sp"></i></div>
+          <i class="fa-solid fa-forward-step sp" id="next-btn-sp"></i>
+      </div>
+    </div>
+    <script src="https://kit.fontawesome.com/742116ed29.js" crossorigin="anonymous"></script>
+    <script src="./js/main.js"></script>
+  </body>
+</html>

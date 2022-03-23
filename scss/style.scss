@@ -1,0 +1,263 @@
+@import "./scss/variables";
+@import "./scss/mixins";
+@import "./scss/placeholder";
+
+@import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+body {
+    font-family: 'Muli' sans-serif;
+    display: flex;
+    min-height: 100vh;
+    justify-content: center;
+    align-items: center;
+    background-image: linear-gradient(to right, #ff7e7e, #693cc2);
+    overflow: hidden;
+}
+.wrapper {
+    position: relative;
+    overflow: hidden;
+    border-radius: #{$border-radius}px;
+    .big-player {
+        position: relative;
+        overflow: hidden;
+        background-color: #fff;
+        padding: 30px;
+        box-shadow: 1px 3px 10px rgba($color: #000000, $alpha: .4);
+        border-radius: #{$border-radius}px;
+        &.changed {
+            animation: changed .4s linear forwards;
+            @include change-player(changed);
+        }
+        &.unchanged {
+            animation: unchanged .4s linear forwards;
+            @include change-player(unchanged);
+        }
+    }
+    .header {
+        display: flex;
+        margin-bottom: 1rem;
+        color: $main-color;
+        i {
+            color: $main-color;
+            font-size: 20px;
+            cursor: pointer;
+        }
+        h2 {
+            margin-left: 70px;
+        }
+    }
+    .img-area {
+        width: 300px;
+        height: 200px;
+        img {
+            width: 100%;
+            height: 100%;
+            border-radius: #{$border-radius}px;
+            box-shadow: 1px 3px 10px rgba($color: #000000, $alpha: .2);
+        }
+    }
+    .name-music {
+        text-align: center;
+        width: 270px;
+        margin: $margin;
+        font: {
+            size: 18px;
+            weight: 500;
+        };
+    }
+    .progress-area {
+        width: 100%;
+        height: 4px;
+        background-color: #ddd;
+        margin: $margin 0 0;
+        border-radius: #{$border-radius + 70}px;
+        cursor: pointer;
+        .progress-bar {
+            background-color: $main-color;
+            width: 0;
+            height: 100%;
+            border-radius: inherit;
+            position: relative;
+            cursor: inherit;
+            &::after {
+                content: "";
+                background-color: inherit;
+                border-radius: 50%;
+                width: 13px;
+                height: 13px;
+                position: absolute;
+                top: -4px;
+                right: -1px;
+                cursor: inherit;
+            }
+        }
+    }
+    .controls,
+    .time {
+        @include display-flex(space-between);
+    }
+    .time {
+        margin: 4px 0 $margin 0;
+    }
+    .controls {
+        // Start Tooltip for btn repeat
+        .tooltip {
+            position: relative;
+            display: inline-block;
+            .tooltip-text {
+                transition: all .3s ease-in;
+                position: absolute;
+                left: -20px;
+                bottom: -30px;
+                background-color: #222;
+                width: 140px;
+                height: 25px;
+                border-radius: 6px;
+                color: #fff;
+                font-size: .85rem;
+                @include display-flex(center);
+                opacity: 0;
+                padding: 5px;
+                &::before {
+                    content: "";
+                    position: absolute;
+                    top: -12px;
+                    left: 24%;
+                    transform: translateX(-50%);
+                    border-width: 6px;
+                    border-style: solid;
+                    border-color: transparent transparent #222 transparent;
+                }
+            }
+            i:hover + .tooltip-text {
+                opacity: 1;
+            }
+        }
+        // End Tooltip for btn repeat
+        color: $main-color;
+        margin-top: 20px;
+        i {
+            font: {
+                size: 28px;
+                weight: 600;
+            };
+            cursor: pointer;
+        }
+        .play-area {
+            @extend %play-area;
+        }
+    }
+    .list-music {
+        background-color: #fff;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        border-radius: #{$border-radius}px;
+        width: 100%;
+        height: 100%;
+        box-shadow: 1px 3px 10px rgba($color: #000000, $alpha: .4);
+        padding: 15px 30px;
+        transition: all .3s ease-in-out;
+        // Start Class Show
+        &.show {
+            top: 30%;
+        }
+        // End Class Show
+        .header {
+            font-size: 18px;
+            @include display-flex(space-between);
+            .row {
+                i {
+                    margin-right: 10px;
+                }
+            }
+            .fa-xmark {
+                cursor: pointer;
+            }
+        }
+        ul {
+            list-style: none;
+            max-height: 230px;
+            overflow-y: auto;
+            &::-webkit-scrollbar {
+                width: 0px;
+            }
+            li {
+                @include display-flex(space-between);
+                border: {
+                    top: 1px solid #ddd;
+                    bottom: 1px solid #ddd;
+                };
+                padding: 10px 0;
+                cursor: pointer;
+                &.playing-now {
+                    color: $main-color;
+                    pointer-events: none;
+                }
+            }
+        }
+    }
+    .big-player.changed + .small-player {
+        z-index: 1;
+        transition-delay: .4s;
+    }
+    .small-player {
+        cursor: pointer;
+        z-index: -1;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        background-color: #fff;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px;
+        border-radius: #{$border-radius}px;
+        box-shadow: 1px 3px 10px rgba($color: #000000, $alpha: .4);
+        .image {
+            @include display-flex(center);
+            border-radius: 50%;
+            position: relative;
+            padding: 7px;
+            animation: rotate-img 3.5s infinite forwards linear;
+            animation-play-state: paused;
+            @include rotateImg;
+            .cd-img {
+                width: 50px;
+                height: 50px;
+            }
+            .img-sp {
+                position: absolute;
+                width: 33px;
+                height: 33px;
+                border-radius: inherit;
+                object-fit: cover;
+            }
+        }
+        h5 {
+            width: 140px;
+            font: {
+                size: 15px;
+                weight: 500;
+            };
+        }
+        .play-area {
+            @extend %play-area;
+        }
+        .fa-forward-step {
+            color: $main-color;
+            margin-right: 10px;
+            font: {
+                size: 28px;
+                weight: 600;
+            };
+            cursor: pointer;
+        }
+    }
+}

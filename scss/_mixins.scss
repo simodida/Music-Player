@@ -1,0 +1,40 @@
+@mixin display-flex($value) {
+    display: flex;
+    justify-content: $value;
+    align-items: center;
+}
+@mixin change-player($animationName) {
+    @if $animationName == "changed" {
+        @keyframes changed {
+            0% {
+                top: 0;
+            }
+            70% {
+                top: 300px;
+            }
+            100% {
+                top: 500px;
+            }
+        }
+    }
+    @else if $animationName == "unchanged" {
+        @keyframes unchanged {
+            0% {
+                top: 500px;
+            }
+            70% {
+                top: 200px;
+            }
+            100% {
+                top: 0;
+            }
+        }
+    }
+}
+@mixin rotateImg {
+    @keyframes rotate-img {
+        to {
+            transform: rotate(360deg);
+        }
+    }
+}
