@@ -1,0 +1,81 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(http-equiv="X-UA-Compatible", content="IE=edge")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title Music Player
+        |
+        //- Favicon
+        <link rel="apple-touch-icon" sizes="180x180" href="/Images/favicons/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/Images/favicons/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/Images/favicons/favicon-16x16.png">
+        <link rel="manifest" href="/Images/favicons/site.webmanifest">
+        <link rel="mask-icon" href="/Images/favicons/safari-pinned-tab.svg" color="#5bbad5">
+        <meta name="msapplication-TileColor" content="#da532c">
+        <meta name="theme-color" content="#ffffff">
+        //- Favicon
+        |
+        link(rel="stylesheet", href="style.css")
+        |
+        link(href="https://fonts.googleapis.com/icon?family=Material+Icons", rel="stylesheet")
+    body
+        .wrapper#wrapper
+            .big-player#big-player
+                .header
+                    i(class="fa-solid fa-angle-down", id="down")
+                    h2 Now Playing
+                .img-area
+                    img(src="images/Sun-Goes-Down.jpg", alt="", id="img")
+                h2(class="name-music", id="name-music") Jim Yosef x ROY KNOX - Sun Goes Down
+                div(class="progress-area", id="progress-area")
+                    div(class="progress-bar", id="progress-bar")
+                .time 
+                    |
+                    span(class="current-time", id="current-time") 0:00
+                    |
+                    |
+                    span(class="duration", id="duration") 0:00
+                audio(src="", id="audio") 
+                .controls 
+                    |
+                    .tooltip
+                        i(class="material-icons", id="repeat-btn") repeat
+                        span.tooltip-text looped
+                    |
+                    |
+                    i(class="fa-solid fa-backward-step", id="prev-music")
+                    |
+                    .play-area 
+                        |
+                        i(class="fa-solid fa-play", id="play-btn")
+                    |
+                    |
+                    i(class="fa-solid fa-forward-step", id="next-music")
+                    |
+                    |
+                    i(class="material-icons", id="list-music-btn") queue_music
+                .list-music#list-music
+                    .header
+                        .row 
+                            |
+                            i(class="fa-solid fa-list-ul")
+                            |
+                            |
+                            span Music list
+                        i(class="fa-solid fa-xmark", id="close-list-music")
+                    ul#ul
+            .small-player#small-player
+                .image#image 
+                    |
+                    img(src="./Images/cd-black.jpg", class="cd-img")
+                    |
+                    |
+                    img(src="Images/Sun-Goes-Down.jpg", alt="", id="img-sp", class="img-sp")
+                h5(id="name-music-sp") Jim Yosef x ROY KNOX - Sun Goes Down
+                .play-area.sp
+                    |
+                    i(class="fa-solid fa-play sp", id="play-btn-sp")
+                i(class="fa-solid fa-forward-step sp", id="next-btn-sp")
+        script(src="https://kit.fontawesome.com/742116ed29.js", crossorigin="anonymous")
+        script(src="main.js")
